@@ -19,7 +19,12 @@ const questions = () => {
     {
       type: 'input',
       name: 'github',
-      message: 'What is your github username? (case sensitive)'
+      message: 'What is your github username?'
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'What is your email?'
     },
     {
       type: 'input',
@@ -96,6 +101,10 @@ const writeFile = answerData => {
       if (err) {
         reject(err);
         return;
+      } else {
+        console.log('');
+        console.log('README has been created! Navigate to the dist folder to access your README.');
+        console.log('Be sure to copy the corresponding license you chose as well (located in the same folder).')
       }
 
       resolve({
@@ -108,7 +117,8 @@ const writeFile = answerData => {
 
 function init() {
   console.log("Hello, welcome to Give Me README!")
-  console.log("Answer the following questions to generate your project's professional README.")
+  console.log(`Answer the following questions to generate your project's professional README.
+  `)
   questions()
   .then(answerData => {
     return generateMarkdown(answerData);

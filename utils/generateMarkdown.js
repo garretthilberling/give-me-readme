@@ -1,3 +1,4 @@
+const fs = require('fs');
 const renderLicenseBadge = (license) => {
   if (!license) {
     return ""
@@ -38,48 +39,48 @@ const renderLicenseSection = (license, link) => {
     return ""
   } else {
     return `
-      ## License
-      This application is covered under the [${renderLicenseLink(link)}](${fullLicense(link)})
+    ## License
+    This application is covered under the [${renderLicenseLink(link)}](${fullLicense(link)})
     `;
   }
 }
 
 module.exports = response => {
-  const { firstname, lastname, github, linkedin, projectname, url, license, includeLicense, languages, purpose, additional, usage, testing, contribute } = response
+  const { firstname, lastname, github, email, linkedin, projectname, url, license, includeLicense, languages, purpose, additional, usage, testing, contribute } = response
   return `
-    # ${projectname}
-    ${renderLicenseBadge(license)}
-    ## Table of Contents
-    * [Description](#Description)
-    * [Installation](#Installation)
-    * [Usage](#Usage)
-    * [License](#License)
-    * [Tests](#Tests)
-    * [Contributing](#Contributing)
-    * [Questions](#Questions)
-    * [Credits](#Credits)
- 
-    ## Description
-    ${projectname} is an application designed to ${purpose}. The languages used to build this application are ${languages}. ${additional}
+  # ${projectname}
+  ${renderLicenseBadge(license)}
+  ## Table of Contents
+  * [Description](#Description)
+  * [Installation](#Installation)
+  * [Usage](#Usage)
+  * [License](#License)
+  * [Tests](#Tests)
+  * [Contributing](#Contributing)
+  * [Questions](#Questions)
+  * [Credits](#Credits)
 
-    ## Usage
-    ${usage}
+  ## Description
+  ${projectname} is an application designed to ${purpose} The languages used to build this application are ${languages.slice(0, -1).join(', ')}, and ${languages.slice(-1)}. ${additional}
 
-    ## Installation
-    No installation required, access the application at the live URL via this link: ${url} 
+  ## Usage
+  ${usage}
 
-    ${renderLicenseSection(includeLicense, license)}
+  ## Installation
+  No installation required, access the application at the live URL via this link: ${url} 
 
-    ## Tests
-    ${testing}
+  ${renderLicenseSection(includeLicense, license)}
 
-    ## Contributing
-    ${contribute}
+  ## Tests
+  ${testing}
 
-    ## Questions
-    If you have any questions about this project, please contact me via my GitHub: https://github.com/${github}
+  ## Contributing
+  ${contribute}
 
-    ## Credits
-    This project was created solely by ${firstname} ${lastname}: ${linkedin}
+  ## Questions
+  If you have any questions about this project, please contact me via my GitHub or email: https://github.com/${github} | ${email}
+
+  ## Credits
+  This project was created solely by ${firstname} ${lastname}: ${linkedin}
     `;
 };
