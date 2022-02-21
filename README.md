@@ -13,7 +13,7 @@ Give Me README is an application designed to help developers generate a professi
 
 ## Usage
 Here is a video demonstration of how to use this app:
-https://drive.google.com/file/d/1oxkgCvzq_pCoQ3KIfDblarN2pQcF-8Qz/view?usp=sharing
+<iframe width="560" height ="315" src="https://drive.google.com/file/d/1oxkgCvzq_pCoQ3KIfDblarN2pQcF-8Qz/view?usp=sharing" frameborder="0" allowfullscreen></iframe>
 
 ## Installation
 No installation required, access the application at the live URL via this link: https://garretthilberling.github.io/give-me-readme/ 
