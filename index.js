@@ -10,11 +10,11 @@ const questions = () => {
       {
         type: 'input',
         name: 'firstname',
-        message: 'What is first name?'
+        message: 'What is your first name?'
     },
     {
       type: 'input',
-      name: 'lastame',
+      name: 'lastname',
       message: 'What is your last name?'
     },
     {
@@ -76,7 +76,7 @@ const questions = () => {
       type: 'input',
       name: 'testing',
       message: "Write a sentence or two describing how to test your application."
-    },
+    }
     ])
     .then(answers => console.log(answers));
 }
@@ -96,9 +96,14 @@ function writeToFile(answerData) {
 function init() {
   console.log("Hello, welcome to Give Me README!")
   console.log("Answer the following questions to generate your project's professional README.")
+  questions();
 }
 
 // Function call to initialize app
 init()
-.then(questions)
-.then(writeToFile);
+.then(data => {
+  return generateMarkdown(data);
+})
+.then(write => {
+  writeToFile(write)
+});
