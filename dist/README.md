@@ -1,6 +1,8 @@
 
     # .
     
+    [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+    
     ## Table of Contents
     * [Description](#Description)
     * [Installation](#Installation)
@@ -12,7 +14,7 @@
     * [Credits](#Credits)
  
     ## Description
-    . is an application designed to .. The languages used to build this application are HTML,CSS,JavaScript,JQuery,Node.js. .
+    . is an application designed to .. The languages used to build this application are HTML,CSS,JavaScript,JQuery,Node.js,ES6. .
 
     ## Usage
     .
@@ -20,6 +22,9 @@
     ## Installation
     No installation required, access the application at the live URL via this link: . 
 
+    
+      ## License
+      This application is covered under the [MIT License](MIT)
     
 
     ## Tests

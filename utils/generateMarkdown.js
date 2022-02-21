@@ -1,5 +1,3 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
 const renderLicenseBadge = (license) => {
   if (!license) {
     return ""
@@ -18,8 +16,6 @@ const renderLicenseBadge = (license) => {
   }
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
 const renderLicenseLink = (license) => {
   if (!license) {
     return ""
@@ -37,8 +33,6 @@ const fullLicense = (license) => {
   }
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
 const renderLicenseSection = (license, link) => {
   if (!license) {
     return ""
@@ -50,10 +44,8 @@ const renderLicenseSection = (license, link) => {
   }
 }
 
-// TODO: Create a function to generate markdown for README
 module.exports = response => {
   const { firstname, lastname, github, linkedin, projectname, url, license, includeLicense, languages, purpose, additional, usage, testing, contribute } = response
-  console.log(firstname);
   return `
     # ${projectname}
     ${renderLicenseBadge(license)}
