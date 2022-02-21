@@ -4,11 +4,17 @@ const renderLicenseBadge = (license) => {
   if (!license) {
     return ""
   } else if (license = "MIT") {
-    return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
+    return `
+    [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+    `
   } else if (license = "GNU GPLv3") {
-    return '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'
+    return `
+    [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+    `
   } else {
-    return '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
+    return `
+    [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+    `
   }
 }
 
@@ -45,12 +51,12 @@ const renderLicenseSection = (license, link) => {
 }
 
 // TODO: Create a function to generate markdown for README
-module.exports = (data) => {
+module.exports = response => {
+  const { firstname, lastname, github, linkedin, projectname, url, license, includeLicense, languages, purpose, additional, usage, testing, contribute } = response
+  console.log(firstname);
   return `
-    # ${data.projectname}
-
-    ${renderLicenseBadge(data.license)}
-
+    # ${projectname}
+    ${renderLicenseBadge(license)}
     ## Table of Contents
     * [Description](#Description)
     * [Installation](#Installation)
@@ -62,26 +68,26 @@ module.exports = (data) => {
     * [Credits](#Credits)
  
     ## Description
-    ${data.projectname} is an application designed to ${data.purpose}. The languages used to build this application are ${data.languages}. ${data.additional}
+    ${projectname} is an application designed to ${purpose}. The languages used to build this application are ${languages}. ${additional}
 
     ## Usage
-    ${data.usage}
+    ${usage}
 
     ## Installation
-    No installation required, access the application at the live URL via this link: ${data.url} 
+    No installation required, access the application at the live URL via this link: ${url} 
 
-    ${renderLicenseSection(data.includeLicense, data.license)}
+    ${renderLicenseSection(includeLicense, license)}
 
     ## Tests
-    ${data.testing}
+    ${testing}
 
     ## Contributing
-    ${data.contribute}
+    ${contribute}
 
     ## Questions
-    If you have any questions about this project, please contact me via my GitHub: https://github.com/${data.github}
+    If you have any questions about this project, please contact me via my GitHub: https://github.com/${github}
 
     ## Credits
-    This project was created solely by ${data.firstname} ${data.lastname}: ${data.linkedin}
+    This project was created solely by ${firstname} ${lastname}: ${linkedin}
     `;
 };

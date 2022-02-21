@@ -1,11 +1,10 @@
-// TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
-// TODO: Create an array of questions for user input
+
 const questions = () => {
-  inquirer 
+  return inquirer 
     .prompt([
       {
         type: 'input',
@@ -74,36 +73,52 @@ const questions = () => {
     },
     {
       type: 'input',
+      name: 'usage',
+      message: "Write a sentences or two to explain how to use the application."
+    },
+    {
+      type: 'input',
       name: 'testing',
       message: "Write a sentence or two describing how to test your application."
+    },
+    {
+      type: 'input',
+      name: 'contribute',
+      message: "Write a sentence or two describing how other devs can contribute to your project."
     }
     ])
-    .then(answers => console.log(answers));
+    // .then(answers => console.log(answers));
 }
 
-// TODO: Create a function to write README file
-function writeToFile(answerData) {
-  const readmeGen = generateMarkdown(answerData);
+const writeFile = answerData => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile('./dist/README.md', answerData, err => {
+      if (err) {
+        reject(err);
+        return;
+      }
 
-  fs.writeFile('./dist/README.MD', readmeGen, err => {
-    if (err) throw new Error(err);
-
-    console.log('README created! Check out the README.md located in the dist folder to see the result!');
+      resolve({
+        ok: true,
+        message: 'File created!'
+      });
+    });
   });
-}
+};
 
-// TODO: Create a function to initialize app
 function init() {
   console.log("Hello, welcome to Give Me README!")
   console.log("Answer the following questions to generate your project's professional README.")
-  questions();
+  questions()
+  .then(answerData => {
+    return generateMarkdown(answerData);
+  })
+  .then(genREADME => {
+    return writeFile(genREADME)
+  })
+  .catch(err => {
+    console.log(err);
+  });
 }
 
-// Function call to initialize app
 init()
-.then(data => {
-  return generateMarkdown(data);
-})
-.then(write => {
-  writeToFile(write)
-});
