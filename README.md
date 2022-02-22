@@ -17,7 +17,7 @@ Here is a video demonstration of how to use this app:
 [![video demonstration](./assets/img/application-screenshot.png)](https://drive.google.com/file/d/1oxkgCvzq_pCoQ3KIfDblarN2pQcF-8Qz/view?usp=sharing)
 
 ## Installation
-No installation required, access the application at the live URL via this link: https://garretthilberling.github.io/give-me-readme/ 
+To use this application the user will need to clone this repository to their machine. 
 
 ## Questions
 If you have any questions about this project, please contact me via my GitHub: https://github.com/garretthilberling
